@@ -1,0 +1,36 @@
+:root {}
+
+@font-face {
+    font-family: "BYekan";
+    src: url("../fonts/BYekan-webfont.eot") format("eot"),
+        url("../fonts/BYekan-webfont.woff") format("woff"),
+        url("../fonts/BYekan-webfont.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+bod {
+    margin: 0;
+    padding: 0;
+    background-color: gray;
+}
+
+.app {
+    margin-top: 200px;
+}
+
+.header {
+    /* height: 500px; */
+}
+
+img {
+    border: none !important;
+    margin: 5px;
+    border: gray 1px;
+    border-radius: 10px !important;
+}
+
+.big-img {
+    height: 75%;
+    width: 75%;
+}
