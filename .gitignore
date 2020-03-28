@@ -23,4 +23,4 @@ yarn-debug.log*
 yarn-error.log*
 
 # image folder
-public/photos
+public/photos/*
