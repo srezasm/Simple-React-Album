@@ -24,15 +24,7 @@ class Images extends Component {
             width="250px"
             loading="lazy"
             src={`/photos/${fileName}`}
-            onClick={function() {
-              const sheet = new CSSStyleSheet();
-              sheet.replaceSync(
-                `.img-${fileName}{width:75%; height:75%; margin:auto;}`
-              );
-
-              // Apply the stylesheet to a document:
-              document.adoptedStyleSheets = [sheet];
-            }}
+            onClick={this.handleShowModal}
           />
         </div>
       );
@@ -59,7 +51,8 @@ class Images extends Component {
         <button
           key={index}
           type="button"
-          className="btn btn-info"
+          value={index}
+          className="btn btn-info bnt-sm"
           onClick={this.handleChangePage}
         >
           {index}
@@ -68,7 +61,7 @@ class Images extends Component {
     }
 
     return (
-      <div className="btn-group" role="group">
+      <div className="btn-group btn-group-sm mt-4 mb-4" role="group">
         {paginateBtns}
       </div>
     );
@@ -76,67 +69,48 @@ class Images extends Component {
 
   handleChangePage = event => {
     this.setState({ index: event.target.value });
+    document.getElementById("images-container").scrollTop = 0;
   };
 
   handleCahngeTotalToShow = event => {
     this.setState({ totalToShow: event.target.value });
   };
 
-  handleClickImage = event => {
-    // Get the modal
-    var modal = document.getElementById("myModal");
+  handleShowModal = event => {
+    var modal = document.getElementById("my-modal");
+    var image = document.getElementById("modal-image");
+    var content = document.getElementsByTagName("body")[0];
 
-    // Get the image and insert it inside the modal - use its "alt" text as a caption
-    var img = event.target;
-    var modalImg = document.getElementById("img01");
-    var captionText = document.getElementById("caption");
-    img.onclick = function() {
-      modal.style.display = "block";
-      modalImg.src = event.target.src;
-      modalImg.alt = event.target.alt;
-      captionText.innerHTML = event.target.alt;
-    };
-
-    // When the user clicks on <span> (x), close the modal
-    modal.onclick = function() {
-      modalImg.className += " out";
-      setTimeout(function() {
-        modal.style.display = "none";
-        modalImg.className = "modal-content";
-      }, 200);
-    };
+    content.style.setProperty("overflow", "hidden");
+    image.setAttribute("src", event.target.src);
+    modal.style.setProperty("display", "flex");
   };
 
   render() {
-    var totalToShow = this.state.totalToShow;
-
     return (
       <Fragment>
-        <div id="my-modal" className="modal">
-          <img id="img01" className="modal-content"></img>
-        </div>
-
-        <div className="container">
+        <div className="container mt-4 mb-4">
           <div className="row justify-content-center">
             <div className="col-md-5">
               <label id="exampleInputEmail1">Top Show</label>
-              <input
-                id="total-to-show"
-                min="10"
-                type="number"
-                defaultValue={20}
+              <select
                 className="form-control"
-                aria-describedby="emailHelp"
-                placeholder="number of show"
                 onChange={this.handleCahngeTotalToShow}
-              />
+              >
+                <option defaultValue>20</option>
+                <option>40</option>
+                <option>60</option>
+                <option>80</option>
+                <option>100</option>
+                <option value={this.state.fileNames.length}>all</option>
+              </select>
               <small>select the top count of items to show</small>
             </div>
           </div>
           <hr />
         </div>
-        <div className="container">
-          <div className="row">{this.showImages({ totalToShow })}</div>
+        <div id="images-container" className="container">
+          <div className="row">{this.showImages()}</div>
           <div className="row justify-content-center">
             <this.handlePages />
           </div>

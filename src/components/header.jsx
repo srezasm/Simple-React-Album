@@ -2,7 +2,11 @@ import React, { Component } from "react";
 
 class Header extends Component {
   render() {
-    return <div className="header"></div>;
+    return (
+      <div className="header">
+        <h1>Simple Albom</h1>
+      </div>
+    );
   }
 }
 

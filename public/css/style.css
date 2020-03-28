@@ -1,26 +1,17 @@
-:root {}
-
-@font-face {
-    font-family: "BYekan";
-    src: url("../fonts/BYekan-webfont.eot") format("eot"),
-        url("../fonts/BYekan-webfont.woff") format("woff"),
-        url("../fonts/BYekan-webfont.ttf") format("truetype");
-    font-weight: normal;
-    font-style: normal;
-}
-
-bod {
+body {
+    font-family: 'Baloo Thambi 2', cursive !important;
     margin: 0;
     padding: 0;
-    background-color: gray;
-}
-
-.app {
-    margin-top: 200px;
 }
 
 .header {
-    /* height: 500px; */
+    padding: 1em;
+    background-image: linear-gradient(to right, #35C8CB, #7B2DD6);
+    margin-bottom: 1em;
+    padding-bottom: 3.5em;
+    text-align: center;
+    clip-path: polygon(50% 0, 100% 0, 100% 65%, 50% 100%, 0 65%, 0 0);
+    color: #343a40;
 }
 
 img {
@@ -33,4 +24,23 @@ img {
 .big-img {
     height: 75%;
     width: 75%;
+}
+
+#my-modal {
+    z-index: 100;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(100, 100, 100, 0.6);
+    position: fixed;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
+
+#modal-image {
+    width: auto;
+    height: 65vh;
+    size: 500px;
 }

@@ -31,62 +31,22 @@ class App extends Component {
     this.setState({ tasks });
   };
 
-  // handleShowTasks = () => {
-  //   // var tasks = [...this.state.tasks];
-  //   // var showElement = [];
-  //   // tasks.map(task => {
-  //   //   showElement.push(
-  //   //     <div key={task.id} className="task--show-item">
-  //   //       <p>{task.title}</p>
-  //   //       <p>{task.desc}</p>
-  //   //       <button type="button">edit</button>
-  //   //     </div>
-  //   //   );
-  //   // });
-  //   // return showElement;
+  handleShowModal = () => {
+    var modal = document.getElementById("my-modal");
+    var image = document.getElementById("modal-image");
+    var content = document.getElementsByTagName("body")[0];
 
-  //   var fileNames = [];
-  //   for (let index = 1; index <= 50; index++) {
-  //     fileNames.push(`pic (${index}).jpg`);
-  //   }
-  //   console.log(fileNames);
-
-  //   var imagesInput = (
-  //     <div className="container">
-  //       {fileNames.map(p => (
-  //         <div className="row" key={p}>
-  //           <div classanme="col-md-4" md={4}>
-  //             <img
-  //               className="img-thumbnail"
-  //               loading="lazy"
-  //               src={`/photos/${p}`}
-  //             />
-  //           </div>
-  //           <div classanme="col-md-4" md={4}>
-  //             <img
-  //               className="img-thumbnail"
-  //               loading="lazy"
-  //               src={`/photos/${p}`}
-  //             />
-  //           </div>
-  //           <div classanme="col-md-4" md={4}>
-  //             <img
-  //               className="img-thumbnail"
-  //               loading="lazy"
-  //               src={`/photos/${p}`}
-  //             />
-  //           </div>
-  //         </div>
-  //       ))}
-  //     </div>
-  //   );
-
-  //   return imagesInput;
-  // };
+    content.style.setProperty("overflow", "unset");
+    image.setAttribute("src", "");
+    modal.style.setProperty("display", "none");
+  };
 
   render() {
     return (
       <div className="app">
+        <div onClick={this.handleShowModal} id="my-modal">
+          <img id="modal-image"></img>
+        </div>
         <Header />
         <Images />
       </div>
