@@ -7,19 +7,19 @@ class Images extends Component {
     this.state = {
       fileNames: [...fileNames],
       totalToShow: 20,
-      index: 1
+      index: 1,
     };
   }
 
   showImages = () => {
     var images = [];
 
-    this.state.fileNames.forEach(fileName => {
+    this.state.fileNames.forEach((fileName) => {
       images.push(
-        <div key={fileName} className="col-md-3">
+        <div key={fileName} className="col-md-3 img-wraper">
           <img
             id={`img-${fileName}`}
-            className="img img-thumbnail"
+            className="img img-thumbnail colorful-shadow"
             height="250px"
             width="250px"
             loading="lazy"
@@ -67,16 +67,16 @@ class Images extends Component {
     );
   };
 
-  handleChangePage = event => {
+  handleChangePage = (event) => {
     this.setState({ index: event.target.value });
     document.getElementById("images-container").scrollTop = 0;
   };
 
-  handleCahngeTotalToShow = event => {
+  handleCahngeTotalToShow = (event) => {
     this.setState({ totalToShow: event.target.value });
   };
 
-  handleShowModal = event => {
+  handleShowModal = (event) => {
     var modal = document.getElementById("my-modal");
     var image = document.getElementById("modal-image");
     var content = document.getElementsByTagName("body")[0];

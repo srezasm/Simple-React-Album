@@ -6,7 +6,7 @@ class App extends Component {
   state = {
     tasks: [{ id: 0, title: "کار های روزانه", desc: "انجام کار های روزمره" }],
     isAddNew: false,
-    isEdit: false
+    isEdit: false,
   };
 
   GetCount = () => {
@@ -24,7 +24,7 @@ class App extends Component {
     const task = {
       id: tasks[tasks.length - 1].id + 1,
       title,
-      desc
+      desc,
     };
 
     tasks.push(task);
